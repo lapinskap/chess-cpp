@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+*.pdb
+*.tlog
+*.idb
+*.lastbuildstate
+*.opendb
+
+.vs/
+Chess.tlog/
+x64/Debug/
