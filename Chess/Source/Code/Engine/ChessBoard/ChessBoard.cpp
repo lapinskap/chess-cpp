@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <ranges>
 
 Chess::Board::~Board()
 {
@@ -29,7 +31,7 @@ void Chess::Board::RemovePiece(Piece* piece)
 
 void Chess::Board::Print() const
 {
-	for (int i = 0; i < 8; i++)
+	for (int i = 7; i >= 0; i--)
 	{
 		for (int j = 0; j < 8; j++)
 		{
@@ -46,6 +48,7 @@ void Chess::Board::Print() const
 				case PieceType::Pawn: std::cout << "P"; break;
 				default:
 					// Error
+					std::cout << "error";
 					break;
 				}
 			}
@@ -70,7 +73,7 @@ Chess::Piece* Chess::Board::GetPieceAt(Point p) const
 bool Chess::Board::IsValid(Point p) const
 {
 	// TODO: check the borders *ukraine*
-	return false;
+	return true;
 }
 
 void Chess::Board::Move(Point from, Point to)
@@ -78,7 +81,12 @@ void Chess::Board::Move(Point from, Point to)
 	if (!IsValid(to))
 		return;
 
-	// TODO: get piece movement and check if to is located in it
-	if (Piece* piece = GetPieceAt(from))
-		piece->SetPosition(to);
+	if (Piece* piece = GetPieceAt(from)) {
+
+		const Points availableMovementList = piece->GetAvailableMovement(*this);
+
+		//if (std::ranges::contains(availableMovementList, to))
+		if (std::find(availableMovementList.begin(), availableMovementList.end(), to) != availableMovementList.end())
+			piece->SetPosition(to);
+	}
 }

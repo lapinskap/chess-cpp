@@ -1,9 +1,9 @@
 #include "ChessPieceMovement.h"
 #include "../ChessBoard/ChessBoard.h"
 
-bool IsAddPointPossible(Chess::Point to, Chess::Color pieceColor, const Chess::Board& board, Chess::Points& points)
+bool IsAddPointPossible(Chess::Point to, Chess::Color pieceColor, const Chess::Board& board)
 {
-	if (board.IsValid(to))
+	if (!board.IsValid(to))
 	{
 		return false;
 	}
@@ -15,11 +15,9 @@ bool IsAddPointPossible(Chess::Point to, Chess::Color pieceColor, const Chess::B
 			return false;
 		}
 
-		//points.push_back(to);
 		return false;
 	}
 
-	//points.push_back(to);
 	return true;
 }
 
@@ -42,10 +40,8 @@ Chess::Points Chess::KnightMovement::GetAvailableMovement(Point from, Color colo
 
 	for (Point point : knightMovements)
 	{
-		if (IsAddPointPossible(point, color, board, points))
-		{
+		if (IsAddPointPossible(point, color, board))
 			points.push_back(point);
-		}
 	}
 
 	return points;

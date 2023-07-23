@@ -8,10 +8,11 @@ namespace Chess
 	struct Point
 	{
 		Point() = default;
+		Point(char x, char y);
 		Point(int x, int y);
 
-		int x = 0;
-		int y = 0;
+		char x = 0;
+		char y = 0;
 
 		bool operator == (Point p) const;
 		Point operator + (Point p) const;

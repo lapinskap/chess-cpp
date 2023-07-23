@@ -41,12 +41,17 @@ int main()
 		
 		// TODO: Parse the input
 		// e2 e4
-		if (input[2] == ' ' && input.size() == 5)
+		if (input[2] == ' ' && input.size() == 5) {
+			std::cout << "test3 move point" << input[2] << input[3] << input[4] << startPos << std::endl;
 			board.Move(startPos, Chess::Point(input[3], input[4]));
+		}
 
 
 		// a1?
 		// TODO: Display all the moves
+
+		std::cout << "startPos: " << startPos << "piece: " << piece << std::endl;
+
 	
 		if (input[2] == '?') {
 			if (!piece)
@@ -55,6 +60,7 @@ int main()
 			std::cout << "test2" << std::endl;
 
 			Chess::Points movement = piece->GetAvailableMovement(board);
+
 			for (Chess::Point p : movement)
 				std::cout << p << "\n";
 			continue;
