@@ -13,8 +13,55 @@ Chess::Board::~Board()
 
 void Chess::Board::Setup()
 {
-	Piece* piece = new Piece(PieceType::Knight, Color::White, Point(4, 4));
-	pieces.push_back(piece);
+	/*Piece* piece = new Piece(PieceType::Knight, Color::White, Point(4, 4));
+	pieces.push_back(piece);*/
+
+	Piece* rookLeftWhite = new Piece(PieceType::Rook, Color::White, Point(0, 0));
+	pieces.push_back(rookLeftWhite);
+	Piece* knightLeftWhite = new Piece(PieceType::Knight, Color::White, Point(1, 0));
+	pieces.push_back(knightLeftWhite);
+	Piece* bishopLeftWhite = new Piece(PieceType::Bishop, Color::White, Point(2, 0));
+	pieces.push_back(bishopLeftWhite);
+	Piece* queenWhite = new Piece(PieceType::Queen, Color::White, Point(3, 0));
+	pieces.push_back(queenWhite);
+	Piece* kingWhite = new Piece(PieceType::King, Color::White, Point(4, 0));
+	pieces.push_back(kingWhite);
+	Piece* bishopRightWhite = new Piece(PieceType::Bishop, Color::White, Point(5, 0));
+	pieces.push_back(bishopRightWhite);
+	Piece* knightRightWhite = new Piece(PieceType::Knight, Color::White, Point(6, 0));
+	pieces.push_back(knightRightWhite);
+	Piece* rookRightWhite = new Piece(PieceType::Rook, Color::White, Point(7, 0));
+	pieces.push_back(rookRightWhite);
+
+	Piece* rookLeftBlack = new Piece(PieceType::Rook, Color::Black, Point(0, 7));
+	pieces.push_back(rookLeftBlack);
+	Piece* knightLeftBlack = new Piece(PieceType::Knight, Color::Black, Point(1, 7));
+	pieces.push_back(knightLeftBlack);
+	Piece* bishopLeftBlack = new Piece(PieceType::Bishop, Color::Black, Point(2, 7));
+	pieces.push_back(bishopLeftBlack);
+	Piece* queenLeftBlack = new Piece(PieceType::Queen, Color::Black, Point(3, 7));
+	pieces.push_back(queenLeftBlack);
+	Piece* kingLeftBlack = new Piece(PieceType::King, Color::Black, Point(4, 7));
+	pieces.push_back(kingLeftBlack);
+	Piece* bishopRightBlack = new Piece(PieceType::Bishop, Color::Black, Point(5, 7));
+	pieces.push_back(bishopRightBlack);
+	Piece* knightRightBlack = new Piece(PieceType::Knight, Color::Black, Point(6, 7));
+	pieces.push_back(knightRightBlack);
+	Piece* rookRightBlack = new Piece(PieceType::Rook, Color::Black, Point(7, 7));
+	pieces.push_back(rookRightBlack);
+
+	for (int i = 0; i < 8; i++)
+	{
+		Piece* pawn = new Piece(PieceType::Pawn, Color::White, Point(i, 1));
+		pieces.push_back(pawn);
+	}
+
+	for (int i = 0; i < 8; i++)
+	{
+		Piece* pawn = new Piece(PieceType::Pawn, Color::Black, Point(i, 6));
+		pieces.push_back(pawn);
+	}
+
 }
 
 void Chess::Board::AddPiece(Piece* piece)
@@ -47,7 +94,6 @@ void Chess::Board::Print() const
 				case PieceType::King: std::cout << "K"; break;
 				case PieceType::Pawn: std::cout << "P"; break;
 				default:
-					// Error
 					std::cout << "error";
 					break;
 				}
@@ -56,24 +102,23 @@ void Chess::Board::Print() const
 				std::cout << " ";
 			std::cout << "]";
 		}
-
 		std::cout << std::endl;
 	}
 }
 
-Chess::Piece* Chess::Board::GetPieceAt(Point p) const
-{
-	for (Piece* piece : pieces)
-		if (piece->GetPosition() == p)
+Chess::Piece* Chess::Board::GetPieceAt(Point p) const {
+	for (Piece* piece : pieces) {
+		if (piece->GetPosition() == p) 
 			return piece;
+	}
 
 	return nullptr;
 }
 
+
 bool Chess::Board::IsValid(Point p) const
 {
-	// TODO: check the borders *ukraine*
-	return true;
+	return p.x >= 0 && p.x <= 7 && p.y >= 0 && p.y <= 7;
 }
 
 void Chess::Board::Move(Point from, Point to)
