@@ -22,10 +22,6 @@ int main()
 
 		if (input == "f") {
 			std::cout << "you paid respect succesfully\n\n\n\n\n\n\n" << std::endl;
-			std::cout << "nnn.................................." << std::endl;
-			std::cout << "nnn.................................." << std::endl;
-			std::cout << "nice;)" << std::endl;
-			std::cout << "\n\n\n\n\n\n\n nigger" << std::endl;
 
 		}
 		if (input.length() < 2)

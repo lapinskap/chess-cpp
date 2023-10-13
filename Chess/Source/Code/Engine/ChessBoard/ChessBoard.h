@@ -23,7 +23,8 @@ namespace Chess
 		bool IsValid(Point p) const;
 
 		void Move(Point from, Point to);
-
+		void CreateSetOfPieces(Color color);
+		static const Point Size;
 	private:
 
 		std::vector<Piece*> pieces;

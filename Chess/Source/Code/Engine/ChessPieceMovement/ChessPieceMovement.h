@@ -16,8 +16,35 @@ namespace Chess
 	class KnightMovement: public PieceMovement 
 	{
 	public:
-		virtual Points GetAvailableMovement(Point from, Color color, const Board& board) const override;
+		// const override ?? TODO
+		virtual Points GetAvailableMovement(Point from, Color color, const Board& board, int maxRadius) const override;
 	};
 
+	class PawnMovement : public PieceMovement
+	{
+	public:
+		~PawnMovement() = default;
+		virtual Points GetAvailableMovement(Point from, Color color, const Board& board, int maxRadius) const = 0;
+	};
 
+	class BishopMovement : public PieceMovement
+	{
+	public:
+		~BishopMovement() = default;
+		virtual Points GetAvailableMovement(Point from, Color color, const Board& board, int maxRadius) const = 0;
+	};
+
+	class QueenMovement : public PieceMovement
+	{
+	public:
+		~QueenMovement() = default;
+		virtual Points GetAvailableMovement(Point from, Color color, const Board& board, int maxRadius) const = 0;
+	};
+
+	class KingMovement : public PieceMovement
+	{
+	public:
+		~KingMovement() = default;
+		virtual Points GetAvailableMovement(Point from, Color color, const Board& board, int maxRadius) const = 0;
+	};
 }

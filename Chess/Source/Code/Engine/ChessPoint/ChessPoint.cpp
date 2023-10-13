@@ -26,6 +26,5 @@ Chess::Point Chess::Point::operator + (Point p) const
 std::ostream& operator << (std::ostream& os, Chess::Point p)
 {
 	os << (char)('a' + p.x) << p.y + 1;
-	// 3 5 -> d6
 	return os;
 }

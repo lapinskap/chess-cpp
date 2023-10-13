@@ -5,11 +5,35 @@
 #include <algorithm>
 #include <ranges>
 
+const Chess::Point Chess::Board::Size(8, 8);
+
 Chess::Board::~Board()
 {
 	for (Piece* piece : pieces)
 		delete piece;
 }
+
+// per color
+void Chess::Board::CreateSetOfPieces(Chess::Color color) {
+	// defineRookPosition(color,...?) 
+	Piece* rookLeft = new Piece(PieceType::Rook, color, Point(0, 0));
+	pieces.push_back(rookLeft);
+	Piece* knightLeft = new Piece(PieceType::Knight, color, Point(1, 0));
+	pieces.push_back(knightLeft);
+	Piece* bishopLeft = new Piece(PieceType::Bishop, color, Point(2, 0));
+	pieces.push_back(bishopLeft);
+	Piece* queen = new Piece(PieceType::Queen, color, Point(3, 0));
+	pieces.push_back(queen);
+	Piece* king = new Piece(PieceType::King, color, Point(4, 0));
+	pieces.push_back(king);
+	Piece* bishopRight = new Piece(PieceType::Bishop, color, Point(5, 0));
+	pieces.push_back(bishopRight);
+	Piece* knightRight = new Piece(PieceType::Knight, color, Point(6, 0));
+	pieces.push_back(knightRight);
+	Piece* rookRight = new Piece(PieceType::Rook, color, Point(7, 0));
+	pieces.push_back(rookRight);
+}
+
 
 void Chess::Board::Setup()
 {

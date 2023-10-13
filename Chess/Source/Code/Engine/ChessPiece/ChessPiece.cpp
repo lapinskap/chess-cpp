@@ -10,6 +10,23 @@ Chess::Piece::Piece(PieceType type_, Color color_, Point position_)
 		case Chess::PieceType::Knight:
 			pieceMovement = new KnightMovement;
 			break;
+		case Chess::PieceType::Pawn:
+			pieceMovement = new PawnMovement;
+			break;
+		case Chess::PieceType::Bishop:
+			pieceMovement = new BishopMovement;
+			break;
+		case Chess::PieceType::Rook:
+			pieceMovement = new RookMovement;
+			break;
+		case Chess::PieceType::Queen:
+			pieceMovement = new QueenMovement;
+			break;
+		case Chess::PieceType::King:
+			pieceMovement = new KingMovement;
+			break;
+		default:
+			break;
 	}
 }
 
