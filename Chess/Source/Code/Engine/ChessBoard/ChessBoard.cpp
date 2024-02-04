@@ -13,67 +13,35 @@ Chess::Board::~Board()
 		delete piece;
 }
 
-// per color
-void Chess::Board::CreateSetOfPieces(Chess::Color color) {
-	// defineRookPosition(color,...?) 
-	Piece* rookLeft = new Piece(PieceType::Rook, color, Point(0, 0));
-	pieces.push_back(rookLeft);
-	Piece* knightLeft = new Piece(PieceType::Knight, color, Point(1, 0));
-	pieces.push_back(knightLeft);
-	Piece* bishopLeft = new Piece(PieceType::Bishop, color, Point(2, 0));
-	pieces.push_back(bishopLeft);
-	Piece* queen = new Piece(PieceType::Queen, color, Point(3, 0));
-	pieces.push_back(queen);
-	Piece* king = new Piece(PieceType::King, color, Point(4, 0));
-	pieces.push_back(king);
-	Piece* bishopRight = new Piece(PieceType::Bishop, color, Point(5, 0));
-	pieces.push_back(bishopRight);
-	Piece* knightRight = new Piece(PieceType::Knight, color, Point(6, 0));
-	pieces.push_back(knightRight);
-	Piece* rookRight = new Piece(PieceType::Rook, color, Point(7, 0));
-	pieces.push_back(rookRight);
-}
-
 
 void Chess::Board::Setup()
 {
-	/*Piece* piece = new Piece(PieceType::Knight, Color::White, Point(4, 4));
-	pieces.push_back(piece);*/
+	for (int i = (int)PieceType::Rook; i <= (int)PieceType::Bishop; i++)
+	{
+		Piece* pieceWhiteLeft = new Piece((PieceType)i, Color::White, Point(i, 0));
+		pieces.push_back(pieceWhiteLeft);
 
-	Piece* rookLeftWhite = new Piece(PieceType::Rook, Color::White, Point(0, 0));
-	pieces.push_back(rookLeftWhite);
-	Piece* knightLeftWhite = new Piece(PieceType::Knight, Color::White, Point(1, 0));
-	pieces.push_back(knightLeftWhite);
-	Piece* bishopLeftWhite = new Piece(PieceType::Bishop, Color::White, Point(2, 0));
-	pieces.push_back(bishopLeftWhite);
+		Piece* pieceWhiteRight = new Piece((PieceType)i, Color::White, Point(7 - i, 0));
+		pieces.push_back(pieceWhiteRight);
+
+		Piece* pieceBlackLeft = new Piece((PieceType)i, Color::Black, Point(i, 7));
+		pieces.push_back(pieceBlackLeft);
+
+		Piece* pieceBlackRight = new Piece((PieceType)i, Color::Black, Point(7 - i, 7));
+		pieces.push_back(pieceBlackRight);
+	}
+
 	Piece* queenWhite = new Piece(PieceType::Queen, Color::White, Point(3, 0));
 	pieces.push_back(queenWhite);
 	Piece* kingWhite = new Piece(PieceType::King, Color::White, Point(4, 0));
 	pieces.push_back(kingWhite);
-	Piece* bishopRightWhite = new Piece(PieceType::Bishop, Color::White, Point(5, 0));
-	pieces.push_back(bishopRightWhite);
-	Piece* knightRightWhite = new Piece(PieceType::Knight, Color::White, Point(6, 0));
-	pieces.push_back(knightRightWhite);
-	Piece* rookRightWhite = new Piece(PieceType::Rook, Color::White, Point(7, 0));
-	pieces.push_back(rookRightWhite);
 
-	Piece* rookLeftBlack = new Piece(PieceType::Rook, Color::Black, Point(0, 7));
-	pieces.push_back(rookLeftBlack);
-	Piece* knightLeftBlack = new Piece(PieceType::Knight, Color::Black, Point(1, 7));
-	pieces.push_back(knightLeftBlack);
-	Piece* bishopLeftBlack = new Piece(PieceType::Bishop, Color::Black, Point(2, 7));
-	pieces.push_back(bishopLeftBlack);
-	Piece* queenLeftBlack = new Piece(PieceType::Queen, Color::Black, Point(3, 7));
-	pieces.push_back(queenLeftBlack);
-	Piece* kingLeftBlack = new Piece(PieceType::King, Color::Black, Point(4, 7));
-	pieces.push_back(kingLeftBlack);
-	Piece* bishopRightBlack = new Piece(PieceType::Bishop, Color::Black, Point(5, 7));
-	pieces.push_back(bishopRightBlack);
-	Piece* knightRightBlack = new Piece(PieceType::Knight, Color::Black, Point(6, 7));
-	pieces.push_back(knightRightBlack);
-	Piece* rookRightBlack = new Piece(PieceType::Rook, Color::Black, Point(7, 7));
-	pieces.push_back(rookRightBlack);
-
+	
+	Piece* queenBlack = new Piece(PieceType::Queen, Color::Black, Point(3, 7));
+	pieces.push_back(queenBlack);
+	Piece* kingBlack = new Piece(PieceType::King, Color::Black, Point(4, 7));
+	pieces.push_back(kingBlack);
+	
 	for (int i = 0; i < 8; i++)
 	{
 		Piece* pawn = new Piece(PieceType::Pawn, Color::White, Point(i, 1));

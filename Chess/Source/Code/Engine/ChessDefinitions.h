@@ -4,12 +4,12 @@ namespace Chess
 {
 	enum class PieceType
 	{
-		Pawn,
+		Rook,
 		Knight,
 		Bishop,
-		Rook,
 		Queen,
-		King
+		King,
+		Pawn
 	};
 
 	enum class Color

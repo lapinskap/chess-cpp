@@ -1,4 +1,7 @@
 #include "ChessPiece.h"
+#include "../ChessBoard/ChessBoard.h"
+
+const int maxRadius = 8;
 
 Chess::Piece::Piece(PieceType type_, Color color_, Point position_)
 	:type(type_),
@@ -58,5 +61,5 @@ void Chess::Piece::SetColor(Color color_)
 
 Chess::Points Chess::Piece::GetAvailableMovement(const Board& board) const
 {
-	return pieceMovement->GetAvailableMovement(GetPosition(), GetColor(), board);
+	return pieceMovement->GetAvailableMovement(GetPosition(), GetColor(), board, Board::Size.x);
 }

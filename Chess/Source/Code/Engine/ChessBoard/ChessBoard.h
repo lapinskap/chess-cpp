@@ -24,7 +24,9 @@ namespace Chess
 
 		void Move(Point from, Point to);
 		void CreateSetOfPieces(Color color);
+
 		static const Point Size;
+
 	private:
 
 		std::vector<Piece*> pieces;

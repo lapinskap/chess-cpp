@@ -29,9 +29,9 @@ namespace Chess
 
 	private:
 
-		PieceType type = PieceType::Pawn;
+		PieceType type;
 		Point position;
-		Color color = Color::White;
+		Color color;
 		PieceMovement* pieceMovement = nullptr;
 	};
 }
